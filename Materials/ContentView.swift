@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             TabView(selection: $selectedTab) {
-                MaterialsView(colorSchemeString: $colorSchemeString, selectedTab: $selectedTab).navigationTitle("Materials").navigationDocument(URL(string: "https://google.com")!).tabItem{
+                MaterialsView(colorSchemeString: $colorSchemeString, selectedTab: $selectedTab).navigationTitle("Materials").navigationDocument(URL(string: "https://github.com/timi2506/SwiftUI-Materials")!).tabItem{
                     Label("Materials", systemImage: "square.fill")}.tag(0)
                 VStack {
                     Form {
@@ -26,7 +26,7 @@ struct ContentView: View {
                         }
                     } .formStyle(GroupedFormStyle())
                 }.navigationTitle("More").tabItem{
-                    Label("More", systemImage: "gear")}.tag(1)
+                    Label("More", systemImage: "plus")}.tag(1)
             }
 #if os(iOS)
             .tabViewStyle(.page)
@@ -74,6 +74,14 @@ struct MaterialsView: View {
     
     var body: some View {
         VStack {
+#if os(iOS)
+            HStack {
+                Image(systemName: "chevron.left")
+                Text("SWIPE FOR NEXT PAGE")
+                Image(systemName: "chevron.right")
+
+            } .font(.caption).fontDesign(.rounded).foregroundStyle(.gray).padding(5)
+#endif
             Spacer()
             ZStack {
                 RoundedRectangle(cornerRadius: cornerRadius)
